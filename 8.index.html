@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OOP Product Showcase</title>
+
+  <style>
+    :root {
+      --bg-gradient: linear-gradient(135deg, #f8ffae, #43c6ac);
+      --card-bg: rgba(255,255,255,0.9);
+      --text-color: #222;
+      --accent: #0077ff;
+    }
+
+    [data-theme="dark"] {
+      --bg-gradient: linear-gradient(135deg, #232526, #414345);
+      --card-bg: #2c2c2c;
+      --text-color: #f1f1f1;
+      --accent: #8bc7ff;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg-gradient);
+      background-attachment: fixed;
+      margin: 0;
+      padding: 20px;
+      transition: 0.3s ease;
+    }
+
+    h1 {
+      color: var(--text-color);
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.3em;
+    }
+
+    #themeToggle {
+      padding: 10px 22px;
+      cursor: pointer;
+      background: var(--accent);
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      border: none;
+      display: block;
+      margin: 0 auto 30px;
+      transition: 0.3s;
+    }
+
+    #themeToggle:hover {
+      transform: scale(1.05);
+    }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      color: var(--text-color);
+      text-align: center;
+      border: 4px solid transparent;
+      transition: 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .product-card:nth-child(1) { border-color: #ff6b6b; }
+    .product-card:nth-child(2) { border-color: #6b9bff; }
+    .product-card:nth-child(3) { border-color: #6bff95; }
+    .product-card:nth-child(4) { border-color: #ffdd6b; }
+    .product-card:nth-child(5) { border-color: #ff6bcb; }
+    .product-card:nth-child(6) { border-color: #ff9a6b; }
+    .product-card:nth-child(7) { border-color: #6bffc7; }
+    .product-card:nth-child(8) { border-color: #c36bff; }
+    .product-card:nth-child(9) { border-color: #ff6b9e; }
+    .product-card:nth-child(10){ border-color: #6bffde; }
+    .product-card:nth-child(11){ border-color: #ffba6b; }
+
+    .product-card img {
+      width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .price {
+      font-weight: bold;
+      margin-top: 10px;
+      font-size: 1.1em;
+    }
+  </style>
+</head>
+
+<body>
+
+<h1>✨ OOP Product Showcase</h1>
+<button id="themeToggle">Switch Theme</button>
+
+<div class="products" id="productList"></div>
+
+<script>
+  // Base Product Class
+  class Product {
+    constructor(name, price, image) {
+      this.name = name;
+      this.price = price;
+      this.image = image;
+    }
+
+    getDetails() {
+      return `${this.name} - $${this.price}`;
+    }
+  }
+
+  // Electronic Product Class
+  class ElectronicProduct extends Product {
+    constructor(name, price, warranty, image) {
+      super(name, price, image);
+      this.warranty = warranty;
+    }
+
+    getDetails() {
+      return `${super.getDetails()} | Warranty: ${this.warranty} years`;
+    }
+  }
+
+  // Clothing Product Class
+  class ClothingProduct extends Product {
+    constructor(name, price, size, image) {
+      super(name, price, image);
+      this.size = size;
+    }
+
+    getDetails() {
+      return `${super.getDetails()} | Size: ${this.size}`;
+    }
+  }
+
+  // Product Data (Correct Images)
+  const products = [
+    new ElectronicProduct("Smartphone", 499, 2, "https://images.pexels.com/photos/699122/pexels-photo-699122.jpeg"),
+    new ElectronicProduct("Laptop", 999, 3, "https://images.pexels.com/photos/18105/pexels-photo.jpg"),
+    new ElectronicProduct("Headphones", 199, 1, "https://images.pexels.com/photos/3394650/pexels-photo-3394650.jpeg"),
+    new ElectronicProduct("Smartwatch", 149, 2, "https://images.pexels.com/photos/437037/pexels-photo-437037.jpeg"),
+    new ElectronicProduct("Camera", 699, 2, "https://images.pexels.com/photos/51383/photo-camera-subject-photographer-51383.jpeg"),
+
+    new ClothingProduct("T-Shirt", 25, "L", "https://images.pexels.com/photos/428340/pexels-photo-428340.jpeg"),
+    new ClothingProduct("sun glasses", 80, "XL", "https://images.pexels.com/photos/428361/pexels-photo-428361.jpeg"),
+    new ClothingProduct("Sneakers", 60, "42", "https://images.pexels.com/photos/2529148/pexels-photo-2529148.jpeg"),
+    new ClothingProduct("Jeans", 50, "M", "https://images.pexels.com/photos/1598507/pexels-photo-1598507.jpeg"),
+    new ClothingProduct("Hat", 20, "One Size", "https://images.pexels.com/photos/984619/pexels-photo-984619.jpeg"),
+    new ClothingProduct("Dress", 70, "S", "https://images.pexels.com/photos/1488463/pexels-photo-1488463.jpeg")
+  ];
+
+  // Display Products
+  const container = document.getElementById("productList");
+
+  products.forEach(product => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = `
+      <img src="${product.image}" alt="${product.name}">
+      <h3>${product.name}</h3>
+      <p>${product.getDetails()}</p>
+      <p class="price">Price: $${product.price}</p>
+    `;
+    container.appendChild(card);
+  });
+
+  // Theme Toggle
+  let darkMode = false;
+  document.getElementById("themeToggle").addEventListener("click", () => {
+    document.body.setAttribute("data-theme", darkMode ? "light" : "dark");
+    darkMode = !darkMode;
+  });
+</script>
+
+</body>
+</html>
