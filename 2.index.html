@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Responsive Product Gallery</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f7fa;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .laptop{
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+    }
+
+    .content {
+      padding: 15px;
+    }
+
+    .content h3 {
+      font-size: 1.2rem;
+      color: #222;
+    }
+
+    .price {
+      color: #ff7b00;
+      font-size: 1.1rem;
+      margin: 8px 0;
+    }
+
+    .desc {
+      color: #555;
+      font-size: 0.9rem;
+      line-height: 1.4;
+    }
+
+    /* Media Queries */
+    @media (max-width: 768px) {
+      .card img {
+        height: 180px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .card img {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Products Gallery</h1>
+
+  <div class="gallery">
+    <div class="card">
+      <img src="samsung s24.jpg" alt="mobile" />
+      <div class="content">
+        <h3>samsung s24 ultra</h3>
+        <p class="price">₹1,34,999</p>
+        <p class="desc">largest batter in india.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="sunglases.jpg" alt="Sunglasses" />
+      <div class="content">
+        <h3>Premium Sunglasses</h3>
+        <p class="price">₹ 1,360</p>
+        <p class="desc">UV-protected sunglasses with a modern sleek design.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="laptop.jpg" alt="Bag" />
+      <div class="content">
+        <h3>hp laptop</h3>
+        <p class="price">₹64,000</p>
+        <p class="desc">Premium quality leather bag perfect for work & travel.</p>
+      </div>
+    </div>
+
+    <div class="card">
+      <img src="shoes.jpg" alt="pumashoes" />
+      <div class="content">
+        <h3>Stylish  pumashoes</h3>
+        <p class="price">₹6,000</p>
+        <p class="desc">Trendy designed for daily casual wear.</p>
+      </div>
+    </div>
+       <div class="card">
+      <img src="bag.jpg" alt="Bag" />
+      <div class="content">
+        <h3> Travel Bag</h3>
+        <p class="price">₹5,000</p>
+        <p class="desc">Premium quality bag perfect for work & travel.</p>
+      </div>
+    </div>   <div class="card">
+      <img src="TV.jpg" alt="tv" />
+      <div class="content">
+        <h3>GoogleTv</h3>
+        <p class="price">₹1,1999</p>
+        <p class="desc">Premium quality led smart tv perfect for movie experience.</p>
+      </div>
+    </div>   <div class="card">
+      <img src="head phones.jpg" alt="headphones" />
+      <div class="content">
+        <h3> Apple Head phones</h3>
+        <p class="price">₹60,000</p>
+        <p class="desc">Premium quality sound perfect for work & travel.</p>
+      </div>
+    </div>   <div class="card">
+      <img src="power bank.jpg" alt="PowerBank" />
+      <div class="content">
+        <h3>BertFord PowerBank</h3>
+        <p class="price">₹1,89000</p>
+        <p class="desc">Premium quality PowerBank perfect for work & travel.</p>
+      </div>
+    </div>   <div class="card">
+      <img src="body spray.jpg" alt="bodyspray" />
+      <div class="content">
+        <h3> bleudechanel Body Spray</h3>
+        <p class="price">₹45,000</p>
+        <p class="desc">Premium quality body spary perfect for work & travel.</p>
+      </div>
+      </div>   <div class="card">
+      <img src="cricket bat.jpg" alt="bat" />
+      <div class="content">
+        <h3>MRF Bat</h3>
+        <p class="price">₹54,999</p>
+        <p class="desc">Premium quality bats perfect for cork ball.</p>
+      </div>
+  </div>
+</body>
+</html>
