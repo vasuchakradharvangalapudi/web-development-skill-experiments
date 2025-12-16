@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vasu Chakradhar | Portfolio</title>
+
+    <style>
+        body{
+            margin:0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(to right, #eaf4ff, #f7fbff);
+        }
+
+        .container{
+            max-width: 1000px;
+            margin: 40px auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        /* HEADER */
+        .header{
+            display: flex;
+            align-items: center;
+            padding: 30px;
+            background: #add7ff;
+            gap: 30px;
+        }
+
+        .header img{
+            height: 220px;
+            border-radius: 50%;
+            border: 4px solid white;
+        }
+
+        .header h1{
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .header h3{
+            margin: 5px 0;
+            font-weight: normal;
+        }
+
+        /* SECTION */
+        .section{
+            padding: 25px 35px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .section h2{
+            color: #004650;
+            margin-bottom: 10px;
+        }
+
+        .section p{
+            line-height: 1.6;
+        }
+
+        /* GRID */
+        .grid{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+            gap: 15px;
+        }
+
+        .card{
+            background: #eef6ff;
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        /* BUTTON */
+        .btn{
+            display: inline-block;
+            margin-top: 10px;
+            background: #24292e;
+            color: white;
+            padding: 10px 18px;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: 0.3s;
+        }
+
+        .btn:hover{
+            background: black;
+        }
+
+        /* FOOTER */
+        footer{
+            text-align: center;
+            padding: 12px;
+            background: #004650;
+            color: white;
+            font-size: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+        <img src="vasu chakradhar.jpeg" alt="Profile Photo">
+
+        <div>
+            <h1>VANGALAPUDI VASU CHAKRADHAR</h1>
+            <h3>B.Tech First Year Student</h3>
+            <h3>KL University, Vijayawada</h3>
+            <a class="btn" href="https://github.com/vangalapudi_vasu_chakradhar" target="_blank">
+                Visit My GitHub
+            </a>
+        </div>
+    </div>
+
+    <!-- ABOUT -->
+    <div class="section">
+        <h2>About Me</h2>
+        <p>
+            I am Vangalapudi Vasu Chakradhar, a B.Tech first-year student at KL University, Vijayawada.
+            I am an enthusiastic learner with a strong interest in software development and web technologies.
+            I enjoy exploring new tools, improving my coding skills, and building practical projects.
+        </p>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section">
+        <h2>Education</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Bachelor of Technology (B.Tech)</h4>
+                <p>KL University, Vijayawada</p>
+                <p>Year: 1st Year (Pursuing)</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section">
+        <h2>Technical Skills</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Programming</h4>
+                <p>Java, Basics of C</p>
+            </div>
+            <div class="card">
+                <h4>Web Technologies</h4>
+                <p>HTML, CSS</p>
+            </div>
+            <div class="card">
+                <h4>Tools</h4>
+                <p>Git, GitHub, VS Code</p>
+            </div>
+            <div class="card">
+                <h4>Currently Learning</h4>
+                <p>Java Advanced Concepts, Responsive Web Design</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section">
+        <h2>Projects</h2>
+        <div class="grid">
+            <div class="card">
+                <h4>Personal Portfolio Website</h4>
+                <p>
+                    A responsive personal portfolio website built using HTML and CSS
+                    to showcase my profile, skills, and projects.
+                </p>
+            </div>
+
+            <div class="card">
+                <h4>Student Practice Projects</h4>
+                <p>
+                    Small academic and practice-based projects using Java and web technologies
+                    to improve problem-solving and coding skills.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- OBJECTIVE -->
+    <div class="section">
+        <h2>Career Objective</h2>
+        <p>
+            To become a skilled software developer by continuously learning new technologies,
+            gaining hands-on experience, and contributing to meaningful projects in the IT industry.
+        </p>
+    </div>
+
+    <!-- CONTACT -->
+    <div class="section">
+        <h2>Contact</h2>
+        <p>Email: <b>vvasuchakradhar@gmail.com</b></p>
+        <p>GitHub: <b>vangalapudi_vasu_chakradhar</b></p>
+    </div>
+
+</div>
+
+<footer>
+    © 2025 VANGALAPUDI VASU CHAKRADHAR | All Rights Reserved
+</footer>
+
+</body>
+</html>
