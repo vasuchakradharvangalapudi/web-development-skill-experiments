@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Event Registration Form</title>
+
+<style>
+    body {
+        font-family: "Segoe UI", Tahoma, sans-serif;
+        background: linear-gradient(135deg, #1cb5e0, #000851);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+    }
+
+    .card {
+        background: #ffffff;
+        border-radius: 22px;
+        padding: 35px;
+        width: 420px;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+    }
+
+    h2 {
+        text-align: center;
+        color: #000851;
+        margin-bottom: 10px;
+        letter-spacing: 1px;
+    }
+
+    .form-container {
+        display: grid;
+        gap: 22px;
+    }
+
+    .input-group {
+        position: relative;
+    }
+
+    .input-group input,
+    .input-group select {
+        width: 100%;
+        padding: 15px;
+        border-radius: 10px;
+        border: 2px solid #1cb5e0;
+        font-size: 15px;
+        outline: none;
+        background: #f5fbff;
+    }
+
+    .input-group label {
+        position: absolute;
+        top: 50%;
+        left: 14px;
+        transform: translateY(-50%);
+        color: #000851;
+        font-size: 14px;
+        background: transparent;
+        padding: 0 6px;
+        transition: 0.3s;
+        pointer-events: none;
+        font-weight: 500;
+    }
+
+    .input-group input:focus,
+    .input-group select:focus {
+        border-color: #000851;
+        box-shadow: 0 0 10px rgba(28,181,224,0.6);
+    }
+
+    .input-group input:focus + label,
+    .input-group input:not(:placeholder-shown) + label,
+    .input-group select:focus + label {
+        top: -8px;
+        font-size: 12px;
+        color: #1cb5e0;
+        background: #ffffff;
+        border-radius: 4px;
+    }
+
+    .checkbox-group {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+        font-size: 14px;
+        color: #000851;
+    }
+
+    button {
+        padding: 14px;
+        border: none;
+        border-radius: 12px;
+        background: linear-gradient(90deg, #1cb5e0, #00f2fe);
+        color: #002244;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        letter-spacing: 1px;
+    }
+
+    button:hover {
+        background: linear-gradient(90deg, #00f2fe, #1cb5e0);
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(28,181,224,0.6);
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <form class="form-container">
+        <h2>Event Registration</h2>
+
+        <div class="input-group">
+            <input type="text" id="name" placeholder=" " required>
+            <label for="name">Full Name</label>
+        </div>
+
+        <div class="input-group">
+            <input type="email" id="email" placeholder=" " required>
+            <label for="email">Email Address</label>
+        </div>
+
+        <div class="input-group">
+            <select id="event" required>
+                <option value="" disabled selected hidden></option>
+                <option>Dance</option>
+                <option>Competition</option>
+                <option>Seminar</option>
+                <option>Music Event</option>
+            </select>
+            <label for="event">Event Type</label>
+        </div>
+
+        <div class="checkbox-group">
+            <input type="checkbox" id="updates">
+            <label for="updates">Send me event updates</label>
+        </div>
+
+        <button type="submit">Register Now</button>
+    </form>
+</div>
+
+</body>
+</html>
+

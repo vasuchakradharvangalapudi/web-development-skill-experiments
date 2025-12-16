@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Themed Layout</title>
+
+  <style>
+    :root {
+      --bg-color: #f9f9fb;
+      --text-color: #1f2937;
+      --primary-color: #6366f1;   
+      --secondary-color: #a855f7; 
+      --font-stack: 'Segoe UI', sans-serif;
+      --spacing: 1rem;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #0f172a;
+      --text-color: #e5e7eb;
+      --primary-color: #22d3ee;   
+      --secondary-color: #38bdf8; 
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-stack);
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      color: var(--text-color);
+      padding: var(--spacing);
+      transition: background 0.4s ease, color 0.4s ease;
+    }
+
+    header,
+    footer {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: var(--bg-color);
+      text-align: center;
+      padding: var(--spacing);
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+    }
+
+    main {
+      display: grid;
+      gap: calc(var(--spacing) * 1.5);
+      padding: calc(var(--spacing) * 2);
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .card {
+      background: var(--bg-color);
+      border: 3px solid var(--primary-color);
+      padding: calc(var(--spacing) * 1.5);
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h2 {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: var(--spacing);
+    }
+
+    .button {
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      color: #ffffff;
+      padding: 0.8rem 1.4rem;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      font-size: 15px;
+      font-weight: 600;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+      transform: scale(1.08);
+    }
+
+    .animate-word {
+      display: inline-block;
+      transition: transform 0.3s ease, background 0.3s ease;
+      cursor: pointer;
+      padding: 2px 6px;
+      border-radius: 6px;
+    }
+
+    .animate-word.clicked {
+      transform: translateY(-10px) rotate(5deg) scale(1.2);
+      background: rgba(99,102,241,0.25);
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1 class="animate-word">My Themed Layout</h1>
+  </header>
+
+  <main>
+    <div class="card">
+      <h2 class="animate-word">Welcome to</h2>
+      <p>
+        <span class="animate-word">Themed</span>
+        <span class="animate-word">Layout</span>
+        <span class="animate-word">with</span>
+        <span class="animate-word">CSS</span>
+        <span class="animate-word">Variables</span>
+        <span class="animate-word">and</span>
+        <span class="animate-word">Themes</span>
+      </p>
+    </div>
+
+    <button class="button" onclick="toggleTheme()">Toggle Theme</button>
+  </main>
+
+  <footer>
+    <p class="animate-word">Vangalapudi Vasu Chakradhar © 2025 Startup</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    }
+
+    document.querySelectorAll(".animate-word").forEach(word => {
+      word.addEventListener("click", () => {
+        word.classList.add("clicked");
+        setTimeout(() => word.classList.remove("clicked"), 300);
+      });
+    });
+  </script>
+</body>
+</html>

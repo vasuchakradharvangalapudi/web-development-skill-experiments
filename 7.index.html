@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dynamic Book List - Bookstore</title>
+
+<!-- BOOTSTRAP CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+:root {
+    /* LIGHT THEME COLORS */
+    --bg-color: #f3f6fd;
+    --header-gradient: linear-gradient(135deg, #ff6ec7, #6a5acd, #00d4ff);
+    --card-bg: #fff7ff;
+    --card-title: #6a5acd;
+    --button-bg: #6a5acd;
+    --button-hover: #ff6ec7;
+    --text-color: #333;
+}
+
+/* DARK THEME */
+.dark-theme {
+    --bg-color: #0d0f23;
+    --header-gradient: linear-gradient(135deg, #ff008c, #5a00ff, #00eaff);
+    --card-bg: #191b34;
+    --card-title: #ff8ff0;
+    --button-bg: #ff008c;
+    --button-hover: #5a00ff;
+    --text-color: #e4e4e4;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Roboto", sans-serif;
+    background: var(--bg-color);
+    color: var(--text-color);
+    transition: 0.5s ease;
+}
+
+/* THEME BUTTON */
+.theme-btn {
+    position: fixed;
+    top: 18px;
+    right: 25px;
+    background: var(--button-bg);
+    color: white;
+    padding: 10px 18px;
+    border-radius: 25px;
+    border: none;
+    font-weight: bold;
+    font-size: 14px;
+    box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    background: var(--button-hover);
+    transform: scale(1.07);
+}
+
+/* HEADER */
+.header {
+    background: var(--header-gradient);
+    color: white;
+    text-align: center;
+    padding: 35px 20px;
+    margin-bottom: 25px;
+    border-radius: 0 0 20px 20px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+    transition: 0.5s;
+}
+
+.header h1 {
+    font-size: 2.5em;
+    font-family: "Poppins", sans-serif;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+}
+
+.header p {
+    font-size: 1.1em;
+    font-weight: 500;
+    font-style: italic;
+}
+
+/* BOOK CARDS */
+.book-card {
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: var(--card-bg);
+    max-width: 260px;
+    margin: auto;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+.book-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(255, 110, 199, 0.4);
+}
+
+.card-title {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: var(--card-title);
+    font-size: 1.15em;
+}
+
+.card-text {
+    color: var(--text-color);
+    font-size: 0.95em;
+    font-style: italic;
+}
+
+/* BOOK PRICE */
+.price {
+    font-weight: bold;
+    color: var(--button-hover);
+    font-size: 1em;
+}
+
+/* BUTTONS */
+button {
+    background: var(--button-bg);
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95em;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: var(--button-hover);
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(255,110,199,0.5);
+}
+
+.row {
+    justify-content: center;
+}
+</style>
+
+</head>
+<body>
+
+<!-- THEME SWITCHER BUTTON -->
+<button class="theme-btn" onclick="toggleTheme()">🌙 Dark Mode</button>
+
+<div class="header">
+    <h1>📚 My Bookstore</h1>
+    <p>Discover amazing books full of Entertainment</p>
+</div>
+
+<div class="container">
+    <div class="row" id="bookList"></div>
+</div>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+/* BOOK DATA */
+const books = [
+    {
+        title: "The Alchemist",
+        author: "Paulo Coelho",
+        price: "₹399",
+        img: "https://covers.openlibrary.org/b/id/8231856-L.jpg"
+    },
+    {
+        title: "Atomic Habits",
+        author: "James Clear",
+        price: "₹450",
+        img: "https://covers.openlibrary.org/b/id/10485102-L.jpg"
+    },
+    {
+        title: "The Midnight Library",
+        author: "Matt Haig",
+        price: "₹499",
+        img: "https://covers.openlibrary.org/b/id/10523378-L.jpg"
+    },
+    {
+        title: "The Great Gatsby",
+        author: "F. Scott Fitzgerald",
+        price: "₹399",
+        img: "https://covers.openlibrary.org/b/id/7222246-L.jpg"
+    },
+    {
+        title: "To Kill a Mockingbird",
+        author: "Harper Lee",
+        price: "₹499",
+        img: "https://covers.openlibrary.org/b/id/8225261-L.jpg"
+    },
+    {
+        title: "1984",
+        author: "George Orwell",
+        price: "₹350",
+        img: "https://covers.openlibrary.org/b/id/8225631-L.jpg"
+    },
+    {
+        title: "Harry Potter - Sorcerer's Stone",
+        author: "J.K. Rowling",
+        price: "₹550",
+        img: "https://covers.openlibrary.org/b/id/7984916-L.jpg"
+    },
+    {
+        title: "The Hobbit",
+        author: "J.R.R. Tolkien",
+        price: "₹480",
+        img: "https://covers.openlibrary.org/b/id/6979861-L.jpg"
+    }
+];
+
+/* DISPLAY BOOKS */
+function displayBooks() {
+    const container = document.getElementById("bookList");
+    container.innerHTML = "";
+    books.forEach(book => {
+        container.innerHTML += `
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4 d-flex justify-content-center">
+                <div class="card book-card p-2 h-100">
+                    <img src="${book.img}" class="card-img-top" style="height:280px; object-fit:cover;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">${book.title}</h5>
+                        <p class="card-text">by ${book.author}</p>
+                        <p class="price">${book.price}</p>
+                        <button class="btn w-100">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+}
+
+displayBooks();
+
+/* THEME TOGGLE FUNCTION */
+function toggleTheme() {
+    document.body.classList.toggle("dark-theme");
+
+    const btn = document.querySelector(".theme-btn");
+
+    if (document.body.classList.contains("dark-theme")) {
+        btn.innerHTML = "☀️ Light Mode";
+    } else {
+        btn.innerHTML = "🌙 Dark Mode";
+    }
+}
+</script>
+
+</body>
+</html>
